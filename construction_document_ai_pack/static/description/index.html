@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Construction Document AI Pack</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        h1 { color: #2c3e50; font-size: 2rem; }
+        h2 { color: #34495e; margin-top: 2rem; }
+        .hero {
+            text-align: center;
+            padding: 2rem 0;
+        }
+        .hero img {
+            max-width: 180px;
+            border-radius: 12px;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .feature {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.2rem;
+            border: 1px solid #e9ecef;
+        }
+        .feature h3 { margin-top: 0; color: #2c3e50; font-size: 1.1rem; }
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #27ae60;
+        }
+        code {
+            background: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <img src="logo.png" alt="Construction Document AI Pack"/>
+        <h1>Construction Document AI Pack</h1>
+        <p><strong>Bid, Change Order &amp; Invoice Extraction</strong></p>
+        <p class="price">$399.99 USD</p>
+    </div>
+
+    <p>
+        The <strong>Construction Document AI Pack</strong> brings AI-powered document
+        extraction to your Odoo construction workflow. Upload bids, change orders,
+        invoices, certificates of insurance, delivery tickets, and subcontract
+        documents &mdash; the module extracts key fields automatically, assigns
+        per-field confidence scores, and routes everything through a
+        human-in-the-loop review process.
+    </p>
+
+    <h2>Key Features</h2>
+    <div class="features">
+        <div class="feature">
+            <h3>Bid Analysis</h3>
+            <p>
+                AI completeness scoring, missing-item detection, risk flags, and
+                recommended actions for every uploaded bid.
+            </p>
+        </div>
+        <div class="feature">
+            <h3>Change Order Extraction</h3>
+            <p>
+                Pull change order numbers, amounts, schedule impact days, and
+                AI approval recommendations with a single click.
+            </p>
+        </div>
+        <div class="feature">
+            <h3>Invoice Extraction</h3>
+            <p>
+                Extract vendor, invoice number, line items, subtotal, tax, and
+                total. AI matches invoices to purchase orders with a confidence
+                score.
+            </p>
+        </div>
+        <div class="feature">
+            <h3>Certificate of Insurance Tracker</h3>
+            <p>
+                Track vendor COIs with automatic expiry detection, days-until-expiry
+                computation, and alert sending for expiring or expired policies.
+            </p>
+        </div>
+        <div class="feature">
+            <h3>Per-Field Confidence &amp; Review</h3>
+            <p>
+                Every extracted field carries an AI confidence score. Reviewers
+                can verify or correct individual fields before marking a job
+                reviewed.
+            </p>
+        </div>
+        <div class="feature">
+            <h3>Delivery Tickets &amp; Subcontracts</h3>
+            <p>
+                Built-in document types for delivery tickets and subcontracts
+                so every construction document flows through the same pipeline.
+            </p>
+        </div>
+    </div>
+
+    <h2>Document Types Supported</h2>
+    <ul>
+        <li><strong>Bid</strong> &mdash; completeness scoring, risk flags, recommended action</li>
+        <li><strong>Change Order</strong> &mdash; amount, schedule impact, approval recommendation</li>
+        <li><strong>Invoice</strong> &mdash; line items, totals, PO matching</li>
+        <li><strong>Certificate of Insurance</strong> &mdash; expiry tracking and alerts</li>
+        <li><strong>Delivery Ticket</strong> &mdash; field extraction and verification</li>
+        <li><strong>Subcontract</strong> &mdash; field extraction and verification</li>
+    </ul>
+
+    <h2>Technical Details</h2>
+    <ul>
+        <li><strong>Technical name:</strong> <code>construction_document_ai_pack</code></li>
+        <li><strong>Odoo version:</strong> 18.0</li>
+        <li><strong>Dependencies:</strong> <code>base</code>, <code>web</code>, <code>mail</code></li>
+        <li><strong>Category:</strong> Productivity / AI</li>
+        <li><strong>License:</strong> LGPL-3</li>
+        <li><strong>Author:</strong> SoftaiDev</li>
+        <li><strong>Website:</strong> <a href="https://softaidev.pages.dev">https://softaidev.pages.dev</a></li>
+    </ul>
+
+    <h2>Installation</h2>
+    <ol>
+        <li>Place the <code>construction_document_ai_pack</code> folder in your Odoo addons directory.</li>
+        <li>Restart the Odoo server.</li>
+        <li>Activate Developer Mode and update the Apps list.</li>
+        <li>Search for &ldquo;Construction Document AI&rdquo; and click Install.</li>
+    </ol>
+
+    <p style="margin-top: 2rem; color: #7f8c8d; font-size: 0.85rem;">
+        &copy; SoftaiDev. All rights reserved.
+    </p>
+</body>
+</html>

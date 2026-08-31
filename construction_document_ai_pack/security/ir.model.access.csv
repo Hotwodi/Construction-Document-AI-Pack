@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_cda_extraction_job_user,cda.extraction.job.user,model_cda_extraction_job,base.group_user,1,1,1,1
+access_cda_extracted_field_user,cda.extracted.field.user,model_cda_extracted_field,base.group_user,1,1,1,1
+access_cda_bid_analysis_user,cda.bid.analysis.user,model_cda_bid_analysis,base.group_user,1,1,1,1
+access_cda_change_order_extract_user,cda.change.order.extract.user,model_cda_change_order_extract,base.group_user,1,1,1,1
+access_cda_invoice_extract_user,cda.invoice.extract.user,model_cda_invoice_extract,base.group_user,1,1,1,1
+access_cda_co_insurance_tracker_user,cda.co.insurance.tracker.user,model_cda_co_insurance_tracker,base.group_user,1,1,1,1

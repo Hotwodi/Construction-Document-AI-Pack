@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Tree view -->
+        <record id="cda_co_insurance_tracker_tree" model="ir.ui.view">
+            <field name="name">cda.co.insurance.tracker.tree</field>
+            <field name="model">cda.co.insurance.tracker</field>
+            <field name="arch" type="xml">
+                <tree string="COI Tracker"
+                      decoration-success="state=='valid'"
+                      decoration-warning="state=='expiring_soon'"
+                      decoration-danger="state=='expired'">
+                    <field name="name"/>
+                    <field name="vendor_name"/>
+                    <field name="policy_number"/>
+                    <field name="insurance_type"/>
+                    <field name="coverage_amount"/>
+                    <field name="effective_date"/>
+                    <field name="expiry_date"/>
+                    <field name="ai_days_until_expiry"/>
+                    <field name="state" widget="badge"
+                           decoration-success="state=='valid'"
+                           decoration-warning="state=='expiring_soon'"
+                           decoration-danger="state=='expired'"/>
+                    <field name="alert_sent" widget="boolean_toggle"/>
+                    <field name="currency_id" column_invisible="True"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form view -->
+        <record id="cda_co_insurance_tracker_form" model="ir.ui.view">
+            <field name="name">cda.co.insurance.tracker.form</field>
+            <field name="model">cda.co.insurance.tracker</field>
+            <field name="arch" type="xml">
+                <form string="Certificate of Insurance">
+                    <header>
+                        <button name="action_send_alert" type="object"
+                                string="Send Alert" class="oe_highlight"
+                                invisible="state=='valid'"/>
+                        <button name="action_refresh_state" type="object"
+                                string="Refresh State"/>
+                        <field name="state" widget="statusbar"
+                               statusbar_visible="valid,expiring_soon,expired"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name"/>
+                            <h1><field name="name" readonly="1"/></h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="vendor_name"/>
+                                <field name="policy_number"/>
+                                <field name="insurance_type"/>
+                                <field name="coverage_amount"/>
+                                <field name="currency_id" groups="base.group_multi_currency"/>
+                            </group>
+                            <group>
+                                <field name="effective_date"/>
+                                <field name="expiry_date"/>
+                                <field name="ai_days_until_expiry"/>
+                                <field name="alert_sent" widget="boolean_toggle"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action -->
+        <record id="cda_co_insurance_tracker_action" model="ir.actions.act_window">
+            <field name="name">COI Tracker</field>
+            <field name="res_model">cda.co.insurance.tracker</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Add your first certificate of insurance
+                </p>
+                <p>
+                    Track vendor COIs and get AI-powered expiry alerts.
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

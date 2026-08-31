@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Tree view -->
+        <record id="cda_extraction_job_tree" model="ir.ui.view">
+            <field name="name">cda.extraction.job.tree</field>
+            <field name="model">cda.extraction.job</field>
+            <field name="arch" type="xml">
+                <tree string="Extraction Jobs" decoration-success="state=='reviewed'"
+                      decoration-info="state=='completed'"
+                      decoration-danger="state=='failed'"
+                      decoration-warning="state=='processing'">
+                    <field name="name"/>
+                    <field name="document_type"/>
+                    <field name="file_name"/>
+                    <field name="state" widget="badge"
+                           decoration-success="state=='reviewed'"
+                           decoration-info="state=='completed'"
+                           decoration-danger="state=='failed'"
+                           decoration-warning="state=='processing'"/>
+                    <field name="ai_confidence" widget="percentage"/>
+                    <field name="extracted_fields_count"/>
+                    <field name="created_by"/>
+                    <field name="created_date"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form view -->
+        <record id="cda_extraction_job_form" model="ir.ui.view">
+            <field name="name">cda.extraction.job.form</field>
+            <field name="model">cda.extraction.job</field>
+            <field name="arch" type="xml">
+                <form string="Extraction Job">
+                    <header>
+                        <button name="action_start_processing" type="object"
+                                string="Process" class="oe_highlight"
+                                invisible="state not in ['uploaded', 'failed']"/>
+                        <button name="action_mark_reviewed" type="object"
+                                string="Mark Reviewed"
+                                invisible="state not in ['completed']"/>
+                        <button name="action_reset_to_uploaded" type="object"
+                                string="Reset"
+                                invisible="state not in ['failed', 'reviewed', 'completed']"/>
+                        <field name="state" widget="statusbar"
+                               statusbar_visible="uploaded,processing,completed,reviewed"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_start_processing" type="object"
+                                    class="oe_stat_button" icon="fa-cogs"
+                                    invisible="state not in ['uploaded', 'failed']">
+                                <div class="o_stat_info">
+                                    <span class="o_stat_text">Process</span>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <label for="name"/>
+                            <h1><field name="name" readonly="1"/></h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="document_type"/>
+                                <field name="file_name"/>
+                                <field name="file_data" filename="file_name"/>
+                            </group>
+                            <group>
+                                <field name="ai_confidence" widget="percentage"/>
+                                <field name="extracted_fields_count"/>
+                                <field name="created_by"/>
+                                <field name="created_date"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Extracted Fields" name="extracted_fields">
+                                <field name="extracted_field_ids">
+                                    <tree editable="bottom">
+                                        <field name="field_name"/>
+                                        <field name="field_value"/>
+                                        <field name="field_type"/>
+                                        <field name="confidence" widget="percentage"/>
+                                        <field name="verified"/>
+                                        <field name="corrected_value"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Bid Analysis" name="bid_analysis"
+                                  invisible="document_type != 'bid'">
+                                <field name="bid_analysis_id">
+                                    <tree>
+                                        <field name="project_name"/>
+                                        <field name="bid_amount"/>
+                                        <field name="ai_completeness_score" widget="percentage"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Change Order" name="change_order"
+                                  invisible="document_type != 'change_order'">
+                                <field name="change_order_extract_id">
+                                    <tree>
+                                        <field name="co_number"/>
+                                        <field name="amount"/>
+                                        <field name="impact_schedule_days"/>
+                                        <field name="ai_approval_recommendation"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Invoice" name="invoice"
+                                  invisible="document_type != 'invoice'">
+                                <field name="invoice_extract_id">
+                                    <tree>
+                                        <field name="vendor_name"/>
+                                        <field name="invoice_number"/>
+                                        <field name="total"/>
+                                        <field name="matched_po"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action -->
+        <record id="cda_extraction_job_action" model="ir.actions.act_window">
+            <field name="name">Extraction Jobs</field>
+            <field name="res_model">cda.extraction.job</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create your first extraction job
+                </p>
+                <p>
+                    Upload a construction document and let AI extract the key fields.
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

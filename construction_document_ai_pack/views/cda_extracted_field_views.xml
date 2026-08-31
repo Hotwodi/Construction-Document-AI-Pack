@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Tree view -->
+        <record id="cda_extracted_field_tree" model="ir.ui.view">
+            <field name="name">cda.extracted.field.tree</field>
+            <field name="model">cda.extracted.field</field>
+            <field name="arch" type="xml">
+                <tree string="Extracted Fields" decoration-success="verified==True">
+                    <field name="name"/>
+                    <field name="job_id"/>
+                    <field name="field_name"/>
+                    <field name="field_value"/>
+                    <field name="field_type"/>
+                    <field name="confidence" widget="percentage"/>
+                    <field name="verified" widget="boolean_toggle"/>
+                    <field name="corrected_value"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form view -->
+        <record id="cda_extracted_field_form" model="ir.ui.view">
+            <field name="name">cda.extracted.field.form</field>
+            <field name="model">cda.extracted.field</field>
+            <field name="arch" type="xml">
+                <form string="Extracted Field">
+                    <header>
+                        <button name="action_verify" type="object"
+                                string="Verify" class="oe_highlight"
+                                invisible="verified==True"/>
+                        <button name="action_apply_correction" type="object"
+                                string="Apply Correction"
+                                invisible="not corrected_value"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name"/>
+                            <h1><field name="name" readonly="1"/></h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="job_id"/>
+                                <field name="field_name"/>
+                                <field name="field_type"/>
+                            </group>
+                            <group>
+                                <field name="confidence" widget="percentage"/>
+                                <field name="verified" widget="boolean_toggle"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="field_value"/>
+                            <field name="corrected_value"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action -->
+        <record id="cda_extracted_field_action" model="ir.actions.act_window">
+            <field name="name">Extracted Fields</field>
+            <field name="res_model">cda.extracted.field</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No extracted fields yet
+                </p>
+                <p>
+                    Fields extracted by the AI engine will appear here for review.
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

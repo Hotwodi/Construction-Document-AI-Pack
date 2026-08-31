@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Tree view -->
+        <record id="cda_invoice_extract_tree" model="ir.ui.view">
+            <field name="name">cda.invoice.extract.tree</field>
+            <field name="model">cda.invoice.extract</field>
+            <field name="arch" type="xml">
+                <tree string="Invoice Extracts">
+                    <field name="name"/>
+                    <field name="job_id"/>
+                    <field name="vendor_name"/>
+                    <field name="invoice_number"/>
+                    <field name="invoice_date"/>
+                    <field name="subtotal" sum="Subtotal"/>
+                    <field name="tax" sum="Tax"/>
+                    <field name="total" sum="Total"/>
+                    <field name="ai_match_confidence" widget="percentage"/>
+                    <field name="matched_po"/>
+                    <field name="currency_id" column_invisible="True"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form view -->
+        <record id="cda_invoice_extract_form" model="ir.ui.view">
+            <field name="name">cda.invoice.extract.form</field>
+            <field name="model">cda.invoice.extract</field>
+            <field name="arch" type="xml">
+                <form string="Invoice Extract">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name"/>
+                            <h1><field name="name" readonly="1"/></h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="job_id"/>
+                                <field name="vendor_name"/>
+                                <field name="invoice_number"/>
+                                <field name="invoice_date"/>
+                            </group>
+                            <group>
+                                <field name="subtotal"/>
+                                <field name="tax"/>
+                                <field name="total"/>
+                                <field name="currency_id" groups="base.group_multi_currency"/>
+                                <field name="ai_match_confidence" widget="percentage"/>
+                                <field name="matched_po"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Line Items" name="line_items">
+                                <field name="line_items"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action -->
+        <record id="cda_invoice_extract_action" model="ir.actions.act_window">
+            <field name="name">Invoice Extracts</field>
+            <field name="res_model">cda.invoice.extract</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No invoice extracts yet
+                </p>
+                <p>
+                    AI-extracted invoices will appear here after processing.
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

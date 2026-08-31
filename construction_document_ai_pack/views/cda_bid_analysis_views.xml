@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Tree view -->
+        <record id="cda_bid_analysis_tree" model="ir.ui.view">
+            <field name="name">cda.bid.analysis.tree</field>
+            <field name="model">cda.bid.analysis</field>
+            <field name="arch" type="xml">
+                <tree string="Bid Analyses">
+                    <field name="name"/>
+                    <field name="job_id"/>
+                    <field name="project_name"/>
+                    <field name="bid_amount" sum="Total Bid Amount"/>
+                    <field name="ai_completeness_score" widget="percentage"/>
+                    <field name="currency_id" column_invisible="True"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form view -->
+        <record id="cda_bid_analysis_form" model="ir.ui.view">
+            <field name="name">cda.bid.analysis.form</field>
+            <field name="model">cda.bid.analysis</field>
+            <field name="arch" type="xml">
+                <form string="Bid Analysis">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name"/>
+                            <h1><field name="name" readonly="1"/></h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="job_id"/>
+                                <field name="project_name"/>
+                                <field name="bid_amount"/>
+                                <field name="currency_id" groups="base.group_multi_currency"/>
+                            </group>
+                            <group>
+                                <field name="ai_completeness_score" widget="percentage"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Bid Breakdown" name="bid_breakdown">
+                                <field name="bid_breakdown"/>
+                            </page>
+                            <page string="AI Insights" name="ai_insights">
+                                <group>
+                                    <field name="missing_items"/>
+                                    <field name="risk_flags"/>
+                                    <field name="recommended_action"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action -->
+        <record id="cda_bid_analysis_action" model="ir.actions.act_window">
+            <field name="name">Bid Analyses</field>
+            <field name="res_model">cda.bid.analysis</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No bid analyses yet
+                </p>
+                <p>
+                    AI-generated bid analyses will appear here after processing.
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

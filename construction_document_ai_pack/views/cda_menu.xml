@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Root menu -->
+        <menuitem id="cda_menu_root"
+                  name="Construction Document AI"
+                  sequence="10"
+                  web_icon="construction_document_ai_pack,static/description/icon.png"/>
+
+        <!-- Submenus -->
+        <menuitem id="cda_menu_extraction_jobs"
+                  name="Extraction Jobs"
+                  parent="cda_menu_root"
+                  sequence="10"
+                  action="cda_extraction_job_action"/>
+
+        <menuitem id="cda_menu_extracted_fields"
+                  name="Extracted Fields"
+                  parent="cda_menu_root"
+                  sequence="20"
+                  action="cda_extracted_field_action"/>
+
+        <menuitem id="cda_menu_bid_analysis"
+                  name="Bid Analysis"
+                  parent="cda_menu_root"
+                  sequence="30"
+                  action="cda_bid_analysis_action"/>
+
+        <menuitem id="cda_menu_change_order"
+                  name="Change Order Extracts"
+                  parent="cda_menu_root"
+                  sequence="40"
+                  action="cda_change_order_extract_action"/>
+
+        <menuitem id="cda_menu_invoice"
+                  name="Invoice Extracts"
+                  parent="cda_menu_root"
+                  sequence="50"
+                  action="cda_invoice_extract_action"/>
+
+        <menuitem id="cda_menu_coi_tracker"
+                  name="COI Tracker"
+                  parent="cda_menu_root"
+                  sequence="60"
+                  action="cda_co_insurance_tracker_action"/>
+    </data>
+</odoo>

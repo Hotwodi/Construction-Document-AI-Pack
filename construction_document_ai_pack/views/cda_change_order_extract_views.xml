@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Tree view -->
+        <record id="cda_change_order_extract_tree" model="ir.ui.view">
+            <field name="name">cda.change.order.extract.tree</field>
+            <field name="model">cda.change.order.extract</field>
+            <field name="arch" type="xml">
+                <tree string="Change Order Extracts"
+                      decoration-success="ai_approval_recommendation=='approve'"
+                      decoration-danger="ai_approval_recommendation=='reject'"
+                      decoration-warning="ai_approval_recommendation=='review'">
+                    <field name="name"/>
+                    <field name="job_id"/>
+                    <field name="co_number"/>
+                    <field name="amount" sum="Total Amount"/>
+                    <field name="impact_schedule_days"/>
+                    <field name="ai_approval_recommendation" widget="badge"
+                           decoration-success="ai_approval_recommendation=='approve'"
+                           decoration-danger="ai_approval_recommendation=='reject'"
+                           decoration-warning="ai_approval_recommendation=='review'"/>
+                    <field name="linked_project"/>
+                    <field name="currency_id" column_invisible="True"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form view -->
+        <record id="cda_change_order_extract_form" model="ir.ui.view">
+            <field name="name">cda.change.order.extract.form</field>
+            <field name="model">cda.change.order.extract</field>
+            <field name="arch" type="xml">
+                <form string="Change Order Extract">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name"/>
+                            <h1><field name="name" readonly="1"/></h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="job_id"/>
+                                <field name="co_number"/>
+                                <field name="linked_project"/>
+                            </group>
+                            <group>
+                                <field name="amount"/>
+                                <field name="currency_id" groups="base.group_multi_currency"/>
+                                <field name="impact_schedule_days"/>
+                                <field name="ai_approval_recommendation"
+                                       widget="badge"
+                                       decoration-success="ai_approval_recommendation=='approve'"
+                                       decoration-danger="ai_approval_recommendation=='reject'"
+                                       decoration-warning="ai_approval_recommendation=='review'"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="description" nolabel="1"/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action -->
+        <record id="cda_change_order_extract_action" model="ir.actions.act_window">
+            <field name="name">Change Order Extracts</field>
+            <field name="res_model">cda.change.order.extract</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No change order extracts yet
+                </p>
+                <p>
+                    AI-extracted change orders will appear here after processing.
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>
