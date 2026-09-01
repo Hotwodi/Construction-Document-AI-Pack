@@ -2,6 +2,7 @@
 {
     'name': 'Construction Document AI Pack: Bid, Change Order & Invoice Extraction',
     'version': '18.0.1.0.0',
+    'images': ['static/description/cover.png'],
     'category': 'Productivity/AI',
     'summary': 'AI-powered extraction for construction bids, change orders, invoices, '
                'certificates of insurance, delivery tickets, and subcontract documents.',
