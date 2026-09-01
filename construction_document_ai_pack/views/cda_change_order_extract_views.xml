@@ -6,7 +6,7 @@
             <field name="name">cda.change.order.extract.tree</field>
             <field name="model">cda.change.order.extract</field>
             <field name="arch" type="xml">
-                <tree string="Change Order Extracts"
+                <list string="Change Order Extracts"
                       decoration-success="ai_approval_recommendation=='approve'"
                       decoration-danger="ai_approval_recommendation=='reject'"
                       decoration-warning="ai_approval_recommendation=='review'">
@@ -21,7 +21,7 @@
                            decoration-warning="ai_approval_recommendation=='review'"/>
                     <field name="linked_project"/>
                     <field name="currency_id" column_invisible="True"/>
-                </tree>
+                </list>
             </field>
         </record>
 
@@ -69,7 +69,7 @@
         <record id="cda_change_order_extract_action" model="ir.actions.act_window">
             <field name="name">Change Order Extracts</field>
             <field name="res_model">cda.change.order.extract</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">list,form</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
                     No change order extracts yet

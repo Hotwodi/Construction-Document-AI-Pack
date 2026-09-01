@@ -6,14 +6,14 @@
             <field name="name">cda.bid.analysis.tree</field>
             <field name="model">cda.bid.analysis</field>
             <field name="arch" type="xml">
-                <tree string="Bid Analyses">
+                <list string="Bid Analyses">
                     <field name="name"/>
                     <field name="job_id"/>
                     <field name="project_name"/>
                     <field name="bid_amount" sum="Total Bid Amount"/>
                     <field name="ai_completeness_score" widget="percentage"/>
                     <field name="currency_id" column_invisible="True"/>
-                </tree>
+                </list>
             </field>
         </record>
 
@@ -64,7 +64,7 @@
         <record id="cda_bid_analysis_action" model="ir.actions.act_window">
             <field name="name">Bid Analyses</field>
             <field name="res_model">cda.bid.analysis</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">list,form</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
                     No bid analyses yet

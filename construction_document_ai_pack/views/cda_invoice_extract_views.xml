@@ -6,7 +6,7 @@
             <field name="name">cda.invoice.extract.tree</field>
             <field name="model">cda.invoice.extract</field>
             <field name="arch" type="xml">
-                <tree string="Invoice Extracts">
+                <list string="Invoice Extracts">
                     <field name="name"/>
                     <field name="job_id"/>
                     <field name="vendor_name"/>
@@ -18,7 +18,7 @@
                     <field name="ai_match_confidence" widget="percentage"/>
                     <field name="matched_po"/>
                     <field name="currency_id" column_invisible="True"/>
-                </tree>
+                </list>
             </field>
         </record>
 
@@ -67,7 +67,7 @@
         <record id="cda_invoice_extract_action" model="ir.actions.act_window">
             <field name="name">Invoice Extracts</field>
             <field name="res_model">cda.invoice.extract</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">list,form</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
                     No invoice extracts yet

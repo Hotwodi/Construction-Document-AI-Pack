@@ -6,7 +6,7 @@
             <field name="name">cda.extracted.field.tree</field>
             <field name="model">cda.extracted.field</field>
             <field name="arch" type="xml">
-                <tree string="Extracted Fields" decoration-success="verified==True">
+                <list string="Extracted Fields" decoration-success="verified==True">
                     <field name="name"/>
                     <field name="job_id"/>
                     <field name="field_name"/>
@@ -15,7 +15,7 @@
                     <field name="confidence" widget="percentage"/>
                     <field name="verified" widget="boolean_toggle"/>
                     <field name="corrected_value"/>
-                </tree>
+                </list>
             </field>
         </record>
 
@@ -62,7 +62,7 @@
         <record id="cda_extracted_field_action" model="ir.actions.act_window">
             <field name="name">Extracted Fields</field>
             <field name="res_model">cda.extracted.field</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">list,form</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
                     No extracted fields yet
