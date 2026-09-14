@@ -23,7 +23,7 @@ Extract, verify, and manage construction documents with AI.
     'license': 'LGPL-3',
     'depends': ['base', 'web', 'mail'],
     'application': True,
-    'price': 399.99,
+    'price': 400.00,
     'currency': 'USD',
     'data': [
         'security/ir.model.access.csv',
